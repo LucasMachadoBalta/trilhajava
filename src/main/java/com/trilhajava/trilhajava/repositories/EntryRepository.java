@@ -1,6 +1,6 @@
 package com.trilhajava.trilhajava.repositories;
 
-import com.trilhajava.trilhajava.models.EntryEntity;
+import com.trilhajava.trilhajava.entity.EntryEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

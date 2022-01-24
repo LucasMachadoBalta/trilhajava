@@ -1,9 +1,6 @@
-package com.trilhajava.trilhajava.models;
+package com.trilhajava.trilhajava.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -13,6 +10,8 @@ import javax.persistence.*;
 @AllArgsConstructor
 @Data
 @Builder
+@Setter
+@Getter
 public class EntryEntity {
 
     private static final long serialVersionUID = 1L;
@@ -37,4 +36,6 @@ public class EntryEntity {
     @JoinColumn(name="category", referencedColumnName = "id")
     private CategoryEntity category;
      */
+
+
 }

@@ -1,7 +1,7 @@
 package com.trilhajava.trilhajava.controller;
 
 import com.trilhajava.trilhajava.dto.EntryDTO;
-import com.trilhajava.trilhajava.models.EntryEntity;
+import com.trilhajava.trilhajava.entity.EntryEntity;
 import com.trilhajava.trilhajava.services.EntryServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,7 +20,7 @@ public class EntryController {
     // create(save) read(get) updateById deleteById
 
     @GetMapping("/")
-    public List<Object> listEntry() {
+    public List<EntryEntity> listEntry() {
         return service.findAll();
     }
 
@@ -31,9 +31,8 @@ public class EntryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public Object saveCategory(@RequestBody EntryEntity dto) { //EntryDTO
+    public EntryDTO saveCategory(@RequestBody EntryDTO dto) { //EntryDTO
 
-        //return ResponseEntity.ok().body(service.save(dto)).getBody();
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
 
@@ -44,7 +43,7 @@ public class EntryController {
 
 
     @PutMapping("/{id}")
-    public Object putCategory(@RequestBody EntryEntity dto) {
+    public Object putCategory(@RequestBody EntryDTO dto) {
         return service.save(dto);
     }
 

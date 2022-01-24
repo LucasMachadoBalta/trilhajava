@@ -1,5 +1,12 @@
 package com.trilhajava.trilhajava.dto;
 
+import lombok.*;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
+@Getter
+@Setter
 public class EntryDTO {
 
     private String name;
