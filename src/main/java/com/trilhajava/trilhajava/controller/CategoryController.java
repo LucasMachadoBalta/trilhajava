@@ -1,5 +1,6 @@
 package com.trilhajava.trilhajava.controller;
 
+import com.trilhajava.trilhajava.dto.CategoryDTO;
 import com.trilhajava.trilhajava.models.CategoryEntity;
 import com.trilhajava.trilhajava.services.CategoryServiceImpl;
 import io.swagger.annotations.Api;

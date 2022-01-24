@@ -35,10 +35,12 @@ public class CategoryServiceImpl {
         categoryRepository.deleteById(id);
     }
 
-    /*
-    public Object put(Object dto) {
-        return categoryRepository.save(mapToDTO((CategoryDTO) dto));
+
+    public Object put(CategoryEntity dto) {
+
+        //return categoryRepository.save(mapToDTO((CategoryDTO) dto));
+        return categoryRepository.save(dto);
     }
 
-     */
+
 }

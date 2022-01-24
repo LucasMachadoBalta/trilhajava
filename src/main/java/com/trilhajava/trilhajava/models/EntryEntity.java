@@ -8,40 +8,33 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "TB_CATEGORY")
+@Table(name = "TB_ENTRY")
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
 @Builder
-public class CategoryEntity {
+public class EntryEntity {
 
     private static final long serialVersionUID = 1L;
 
-    /*
-    @Autowired
-    private ModelMapper modelMapper;
-     */
-
     @Id
-    @Column(name = "categoryId")
+    @Column(name = "entry_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
+    private String type;
+    private String amount;
+    private String date;
+    private Boolean paid;
 
     /*
-    @OneToMany(mappedBy = "category")
-    @JsonIgnore
-    private List<EntryEntity> listEntries;
-
-    private CategoryEntity mapToDTO(CategoryDTO categoryDTO) {
-        return modelMapper.map(categoryDTO, CategoryEntity.class);
-
-    }
-
+    @ManyToOne
+    @JoinColumn(name="category", referencedColumnName = "id")
+    private CategoryEntity category;
      */
 }
