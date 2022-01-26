@@ -31,8 +31,7 @@ public class EntryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public EntryDTO saveCategory(@RequestBody EntryDTO dto) { //EntryDTO
-
+    public EntryDTO saveCategory(@RequestBody EntryDTO dto) {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
 

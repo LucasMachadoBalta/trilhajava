@@ -5,6 +5,7 @@ import lombok.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
+@Builder
 @Getter
 @Setter
 public class EntryDTO {

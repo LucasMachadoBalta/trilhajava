@@ -20,7 +20,7 @@ import java.util.List;
 public class CategoryController {
 
     @Autowired
-    CategoryService service;
+    CategoryServiceImpl service;
 
     @GetMapping("/all")
     @ApiOperation(value="Retorna uma lista de categorias")
@@ -34,12 +34,15 @@ public class CategoryController {
         return service.findById(id);
     }
 
+    /*
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value="Salva uma categoria")
     public CategoryEntity saveCategory(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
+
+     */
 
     @DeleteMapping("/{id}")
     @ApiOperation(value="Deleta uma categoria")

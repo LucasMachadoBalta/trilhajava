@@ -8,8 +8,8 @@ import javax.persistence.*;
 @Table(name = "TB_ENTRY")
 @NoArgsConstructor
 @AllArgsConstructor
-@Data
-@Builder
+@Data // anotação necessária?
+@Builder // anotação necessária?
 @Setter
 @Getter
 public class EntryEntity {
@@ -31,11 +31,11 @@ public class EntryEntity {
     private String date;
     private Boolean paid;
 
-    /*
+
     @ManyToOne
-    @JoinColumn(name="category", referencedColumnName = "id")
+    @JoinColumn(name="category", referencedColumnName = "categoryId")
     private CategoryEntity category;
-     */
+
 
 
 }

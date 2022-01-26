@@ -33,7 +33,6 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public EntryDTO save(EntryDTO dto) {
-
         return mapToDTO(entryRepository.save(mapToEntity((EntryDTO) dto)));
         //return entryRepository.save(dto);
     }
@@ -50,7 +49,6 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public EntryEntity put(EntryDTO dto) {
-
         return entryRepository.save(mapToEntity((EntryDTO) dto));
         //return entryRepository.save(dto);
     }
@@ -58,7 +56,6 @@ public class EntryServiceImpl implements EntryService {
 
     private EntryEntity mapToEntity(EntryDTO entryDTO) {
         return modelMapper.map(entryDTO, EntryEntity.class);
-
     }
 
     private EntryDTO mapToDTO(EntryEntity entryEntity) {
