@@ -1,5 +1,6 @@
 package com.trilhajava.trilhajava.entity;
 
+import com.trilhajava.trilhajava.dto.EntryDTO;
 import lombok.*;
 
 import javax.persistence.*;
@@ -36,6 +37,15 @@ public class EntryEntity {
     @JoinColumn(name="category", referencedColumnName = "categoryId")
     private CategoryEntity category;
 
-
+    public static EntryDTO mapToDTO(EntryEntity entryEntity) {
+        return EntryDTO.builder()
+                .description(entryEntity.description)
+                .name(entryEntity.name)
+                .type(entryEntity.type)
+                .amount(entryEntity.amount)
+                .date(entryEntity.date)
+                .paid(entryEntity.paid)
+                .build();
+    }
 
 }

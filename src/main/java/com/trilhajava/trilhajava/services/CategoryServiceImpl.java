@@ -13,7 +13,6 @@ import java.util.List;
 import java.util.Optional;
 
 import static com.trilhajava.trilhajava.dto.CategoryDTO.mapToEntity;
-import static com.trilhajava.trilhajava.entity.CategoryEntity.mapToDTO;
 
 @Service
 public class CategoryServiceImpl {
@@ -44,9 +43,10 @@ public class CategoryServiceImpl {
         return new ArrayList<>(categoryRepository.findAll());
     }
 
-    public CategoryDTO save(CategoryDTO dto) {
+    public CategoryEntity save(CategoryDTO dto) {
         //return categoryRepository.save(dto);
-        return mapToDTO(categoryRepository.save(mapToEntity((CategoryDTO) dto)));
+        //return mapToDTO(categoryRepository.save(mapToEntity((CategoryDTO) dto)));
+        return categoryRepository.save(mapToEntity((CategoryDTO) dto));
     }
 
 
@@ -64,23 +64,42 @@ public class CategoryServiceImpl {
 
         //categoryRepository.deleteById(id);
     }
+    /*
 
     public CategoryEntity put(CategoryDTO dto) {
         return categoryRepository.save(mapToEntity(dto));
     }
 
-    /*
+     */
 
-    public void updateById(Long id, CategoryDTO dto) {
-        CategoryEntity categoryUpdated = categoryRepository.findById(id)
+
+    public CategoryEntity updateById(CategoryDTO dto) {
+        CategoryEntity categoryUpdated = categoryRepository.findById(dto.getId())
                 .orElseThrow(() -> new CategoryNotFoundException("Categoria não encontrada"));
-        categoryUpdated.setName(CategoryDTO.getName());
-        categoryUpdated.setDescription(CategoryDTO.getDescription());
-        categoryRepository.save(categoryUpdated);
+        categoryUpdated.setName(dto.getName());
+        categoryUpdated.setDescription(dto.getDescription());
+        return categoryRepository.save(categoryUpdated);
+
+        /*
+        Optional<CategoryEntity> opt = categoryRepository.findById(id);
+        try {
+            if (opt.isPresent()) {
+                opt.get(dto.setName()); //.setName(dto.getName());
+                opt.getDescription(dto.getDescription());
+                categoryRepository.save(opt);
+            } else {
+                throw new CategoryNotFoundException("Categoria não encontrada");
+            }
+        } catch (CategoryNotFoundException e) {
+            e.printStackTrace();
+        }
+     */
+
     }
 
 
 
+    /*
     private CategoryEntity mapToEntity(CategoryDTO dto) {
         return CategoryEntity.builder()
                 .name(dto.getName())

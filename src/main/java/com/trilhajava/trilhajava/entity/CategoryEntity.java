@@ -15,8 +15,6 @@ import java.util.List;
 @AllArgsConstructor
 @Data // anotação necessária?
 @Builder // anotação necessária?
-@Setter
-@Getter
 public class CategoryEntity {
 
     private static final long serialVersionUID = 1L;

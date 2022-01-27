@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static com.trilhajava.trilhajava.dto.CategoryDTO.mapToEntity;
+
 @RestController
 @RequestMapping("/category")
 @Api(value="API REST Controle Financeiro")
@@ -34,15 +36,12 @@ public class CategoryController {
         return service.findById(id);
     }
 
-    /*
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value="Salva uma categoria")
     public CategoryEntity saveCategory(@RequestBody CategoryDTO dto) {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
-
-     */
 
     @DeleteMapping("/{id}")
     @ApiOperation(value="Deleta uma categoria")
@@ -52,8 +51,8 @@ public class CategoryController {
 
     @PutMapping("/{id}")
     @ApiOperation(value="Atualiza uma categoria")
-    public void updateById(@RequestBody CategoryDTO dto) {
-        ResponseEntity.ok().body(service.save(dto));
+    public void updateById(@RequestBody CategoryDTO dto) { //Long id
+        ResponseEntity.ok().body(service.updateById(dto));
     }
 
 }

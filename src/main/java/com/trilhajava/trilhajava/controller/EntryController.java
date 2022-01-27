@@ -19,7 +19,7 @@ public class EntryController {
 
     // create(save) read(get) updateById deleteById
 
-    @GetMapping("/")
+    @GetMapping("/all")
     public List<EntryEntity> listEntry() {
         return service.findAll();
     }
@@ -31,19 +31,20 @@ public class EntryController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
-    public EntryDTO saveCategory(@RequestBody EntryDTO dto) {
+    public EntryDTO saveEntry(@RequestBody EntryDTO dto) {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
 
     @DeleteMapping("/{id}")
-    public void deleteCategory(@PathVariable("id") Long id) {
+    public void deleteEntry(@PathVariable("id") Long id) {
         service.delete(id);
     }
 
 
     @PutMapping("/{id}")
-    public Object putCategory(@RequestBody EntryDTO dto) {
-        return service.save(dto);
+    public void updateById(@RequestBody EntryDTO dto) {
+        //return service.save(dto);
+        ResponseEntity.ok().body(service.updateById(dto));
     }
 
 

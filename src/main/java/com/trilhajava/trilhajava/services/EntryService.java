@@ -19,5 +19,6 @@ public interface EntryService {
 
     void delete(Long id);
 
-    void updateById(Long id, EntryDTO dto); // ñ seria melhor return obj p/ mostrar alterações?
+    EntryEntity updateById(EntryDTO dto); // ñ seria melhor return obj p/ mostrar alterações?
+
 }
