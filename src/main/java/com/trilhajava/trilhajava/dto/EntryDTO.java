@@ -1,5 +1,6 @@
 package com.trilhajava.trilhajava.dto;
 
+import com.trilhajava.trilhajava.entity.CategoryEntity;
 import com.trilhajava.trilhajava.entity.EntryEntity;
 import lombok.*;
 
@@ -18,15 +19,17 @@ public class EntryDTO {
     private String amount;
     private String date;
     private Boolean paid;
+    private CategoryEntity category;
 
     public static EntryEntity mapToEntity(EntryDTO dto) {
         return EntryEntity.builder()
-                .name(dto.getName())
+                .id(dto.getId())
                 .description(dto.getDescription())
                 .type(dto.getType())
                 .amount(dto.getAmount())
                 .date(dto.getDate())
                 .paid(dto.getPaid())
+                .category(dto.getCategory())
                 .build();
     }
 }

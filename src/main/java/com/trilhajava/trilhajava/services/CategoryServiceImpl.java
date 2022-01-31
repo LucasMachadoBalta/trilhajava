@@ -1,9 +1,12 @@
 package com.trilhajava.trilhajava.services;
 
 import com.trilhajava.trilhajava.dto.CategoryDTO;
+import com.trilhajava.trilhajava.dto.EntryDTO;
 import com.trilhajava.trilhajava.entity.CategoryEntity;
+import com.trilhajava.trilhajava.entity.EntryEntity;
 import com.trilhajava.trilhajava.exceptions.CategoryNotFoundException;
 import com.trilhajava.trilhajava.repositories.CategoryRepository;
+import com.trilhajava.trilhajava.repositories.EntryRepository;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,6 +22,9 @@ public class CategoryServiceImpl {
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private EntryRepository entryRepository;
 
     //@Autowired
     //private ModelMapper modelMapper;
@@ -49,6 +55,15 @@ public class CategoryServiceImpl {
         return categoryRepository.save(mapToEntity((CategoryDTO) dto));
     }
 
+    /*
+    public CategoryEntity saveCategoryWithEntry(CategoryDTO categoryDTO, EntryDTO entryDTO) {
+        //return categoryRepository.save(dto);
+        //return mapToDTO(categoryRepository.save(mapToEntity((CategoryDTO) dto)));
+        EntryEntity entryId = entryRepository.getById(entryDTO.getId());
+        categoryDTO.setListEntries((List<EntryEntity>) entryId);
+        return categoryRepository.save(mapToEntity((CategoryDTO) categoryDTO));
+    }
+     */
 
     public void delete(Long id) {
         Optional<CategoryEntity> opt = categoryRepository.findById(id);
@@ -61,8 +76,6 @@ public class CategoryServiceImpl {
         } catch (CategoryNotFoundException e) {
             e.printStackTrace();
         }
-
-        //categoryRepository.deleteById(id);
     }
     /*
 
@@ -100,13 +113,6 @@ public class CategoryServiceImpl {
 
 
     /*
-    private CategoryEntity mapToEntity(CategoryDTO dto) {
-        return CategoryEntity.builder()
-                .name(dto.getName())
-                .description(dto.getDescription())
-                .build();
-    }
-
 
     private CategoryEntity mapToEntity(CategoryDTO categoryDTO) {
         return modelMapper.map(categoryDTO, CategoryEntity.class);

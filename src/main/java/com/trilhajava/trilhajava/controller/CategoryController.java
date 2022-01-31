@@ -1,6 +1,7 @@
 package com.trilhajava.trilhajava.controller;
 
 import com.trilhajava.trilhajava.dto.CategoryDTO;
+import com.trilhajava.trilhajava.dto.EntryDTO;
 import com.trilhajava.trilhajava.entity.CategoryEntity;
 import com.trilhajava.trilhajava.services.CategoryService;
 import com.trilhajava.trilhajava.services.CategoryServiceImpl;

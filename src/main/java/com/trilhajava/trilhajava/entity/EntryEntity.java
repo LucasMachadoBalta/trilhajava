@@ -20,31 +20,40 @@ public class EntryEntity {
     @Id
     @Column(name = "entry_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private long id;
 
     @Column(name = "name")
     private String name;
 
     @Column(name = "description")
     private String description;
+
+    @Column(name = "type")
     private String type;
+
+    @Column(name = "amount")
     private String amount;
+
+    @Column(name = "date")
     private String date;
+
+    @Column(name = "paid")
     private Boolean paid;
 
-
-    @ManyToOne
+    @ManyToOne //required = true
     @JoinColumn(name="category", referencedColumnName = "categoryId")
     private CategoryEntity category;
 
     public static EntryDTO mapToDTO(EntryEntity entryEntity) {
         return EntryDTO.builder()
+                .id(entryEntity.id)
                 .description(entryEntity.description)
                 .name(entryEntity.name)
                 .type(entryEntity.type)
                 .amount(entryEntity.amount)
                 .date(entryEntity.date)
                 .paid(entryEntity.paid)
+                .category(entryEntity.category)
                 .build();
     }
 

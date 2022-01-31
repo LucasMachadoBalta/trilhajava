@@ -38,7 +38,7 @@ public class EntryServiceImpl implements EntryService {
     @Override
     public EntryDTO save(EntryDTO dto) {
         return mapToDTO(entryRepository.save(mapToEntity((EntryDTO) dto)));
-        //return entryRepository.save(dto);
+
     }
 
     @Override
