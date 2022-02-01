@@ -23,7 +23,7 @@ public class EntryDTO {
 
     public static EntryEntity mapToEntity(EntryDTO dto) {
         return EntryEntity.builder()
-                .id(dto.getId())
+                .name(dto.getName())
                 .description(dto.getDescription())
                 .type(dto.getType())
                 .amount(dto.getAmount())

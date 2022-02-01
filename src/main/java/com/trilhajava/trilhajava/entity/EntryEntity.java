@@ -40,7 +40,7 @@ public class EntryEntity {
     @Column(name = "paid")
     private Boolean paid;
 
-    @ManyToOne //required = true
+    @ManyToOne //required = true // caso necessário
     @JoinColumn(name="category", referencedColumnName = "categoryId")
     private CategoryEntity category;
 
