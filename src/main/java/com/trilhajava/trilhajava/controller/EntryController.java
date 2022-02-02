@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.OptionalDouble;
 
 @RestController
 @RequestMapping("/entry")
@@ -23,6 +24,9 @@ public class EntryController {
     public List<EntryEntity> listEntry() {
         return service.findAll();
     }
+
+    @GetMapping("/average")
+    public OptionalDouble getAverage() { return service.getAverage(); }
 
     @GetMapping("/{id}")
     public Object findById(@PathVariable("id") Long id) {

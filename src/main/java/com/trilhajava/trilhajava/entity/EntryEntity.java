@@ -32,7 +32,7 @@ public class EntryEntity {
     private String type;
 
     @Column(name = "amount")
-    private String amount;
+    private Integer amount;
 
     @Column(name = "date")
     private String date;

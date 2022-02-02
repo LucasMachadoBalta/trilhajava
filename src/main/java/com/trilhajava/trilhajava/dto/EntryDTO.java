@@ -16,7 +16,7 @@ public class EntryDTO {
     private String name;
     private String description;
     private String type;
-    private String amount;
+    private Integer amount;
     private String date;
     private Boolean paid;
     private CategoryEntity category;

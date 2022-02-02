@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.OptionalDouble;
 
 import static com.trilhajava.trilhajava.dto.EntryDTO.mapToEntity;
 import static com.trilhajava.trilhajava.entity.EntryEntity.mapToDTO;
@@ -27,7 +28,9 @@ public class EntryServiceImpl implements EntryService {
 
     @Override
     public EntryEntity findById(Long id) {
-        return entryRepository.findById(id).get();
+        Optional<EntryEntity> opt = entryRepository.findById(id);
+        return opt.orElseThrow(() -> new EntryNotFoundException(
+                "ID: " + id + " não encontrado. " + "Tipo: " + EntryNotFoundException.class.getName()));
     }
 
     @Override
@@ -39,7 +42,19 @@ public class EntryServiceImpl implements EntryService {
     public EntryDTO save(EntryDTO dto) {
         return mapToDTO(entryRepository.save(mapToEntity((EntryDTO) dto)));
 
-    }
+        /*
+        Optional<EntryEntity> opt = entryRepository.findById(dto.getId());
+        try {
+            if (opt.isPresent()) {
+                throw new EntryNotFoundException("id já existente");
+            } else {
+                return mapToDTO(entryRepository.save(mapToEntity((EntryDTO) dto)));
+            }
+        } catch (EntryNotFoundException e) {
+            e.printStackTrace();
+
+         */
+        }
 
     @Override
     public void delete(Long id) {
@@ -53,15 +68,12 @@ public class EntryServiceImpl implements EntryService {
         } catch (EntryNotFoundException e) {
             e.printStackTrace();
         }
-
-        //entryRepository.deleteById(id);
     }
 
 
     @Override
     public EntryEntity put(EntryDTO dto) {
         return entryRepository.save(mapToEntity((EntryDTO) dto));
-        //return entryRepository.save(dto);
     }
 
     @Override
@@ -71,6 +83,13 @@ public class EntryServiceImpl implements EntryService {
         entryUpdated.setName(dto.getName());
         entryUpdated.setDescription(dto.getDescription());
         return entryRepository.save(entryUpdated);
+    }
+
+    @Override
+    public OptionalDouble getAverage() {
+        List<EntryEntity> list = new ArrayList<>(entryRepository.findAll());
+        OptionalDouble average = list.stream().mapToInt(e -> e.getAmount()).average();
+        return average;
     }
 
     /*
