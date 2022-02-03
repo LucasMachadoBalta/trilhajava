@@ -11,11 +11,12 @@ public class TrilhajavaApplication {
 		SpringApplication.run(TrilhajavaApplication.class, args);
 	}
 
-
+	/*
 	@Bean
 	public ModelMapper modelMapper(){
 		return new ModelMapper();
 	}
+	 */
 
 
 }

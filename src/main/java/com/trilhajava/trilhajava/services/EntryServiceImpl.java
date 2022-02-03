@@ -89,8 +89,18 @@ public class EntryServiceImpl implements EntryService {
     public OptionalDouble getAverage() {
         List<EntryEntity> list = new ArrayList<>(entryRepository.findAll());
         OptionalDouble average = list.stream().mapToInt(e -> e.getAmount()).average();
-        return average;
+        try {
+            if (average.getAsDouble() == (0)) {
+                throw new Exception();
+            }
+        } catch (Exception e) {
+            throw new EntryNotFoundException("Média inválida, média igual a 0.0");
+        }
+            return average;
+
     }
+
+
 
     /*
     private EntryEntity mapToEntity(EntryDTO entryDTO) {

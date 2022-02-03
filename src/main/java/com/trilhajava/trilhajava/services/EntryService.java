@@ -22,5 +22,5 @@ public interface EntryService {
 
     EntryEntity updateById(EntryDTO dto); // ñ seria melhor return obj p/ mostrar alterações?
 
-    OptionalDouble getAverage();
+    OptionalDouble getAverage() throws Exception;
 }
