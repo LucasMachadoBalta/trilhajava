@@ -1,0 +1,111 @@
+
+
+Trilha Java - passo 10
+Lucas Machado de Oliveira
+
+a) O Spring abstrai e facilita a comunicação com o servidor da api,
+as configurações de dependências, as conexões com o BD, o entendimento
+da infraestrutura, as configurações e o código necessários para se 
+começar uma api e ter um entregável, fornece ferramentas padronizadas 
+para proteger a api e uma base para criar outras funcionalidades etc.; 
+com isso, o Spring permite que o desenvolvimento seja mais rápido e menos 
+dificultoso, permitindo que os desenvolvedores se concentrem no código 
+que implementa as regras de negócio.
+
+b) Spring Security: ferramenta Spring que monitora autenticações,
+garantido apenas o acesso de clientes autorizados.
+
+	Spring Data: ferramenta Spring que permite conexão com BDs
+não relacionais e aprimora a conexão com BDs relacionais.
+
+	Spring Dev Tools: ferramenta Spring que permite uma
+reinicialização instantânea do servidor assim que o código é 
+alterado.
+
+c) Dev Tools, Spring JPA. 
+
+
+d)  1. utilizar o Spring facilita o desenvolvimento de apis pois ele
+abstrai e padroniza comandos e passos que, antigamente, eram feitos
+à mão pelos desenvolvedores.
+	2. Permite a "Inversão de Controle", delegando o monitoramento de 
+conexões com o BD e manipulação de dados ao Spring.
+	3. Disponibiliza uma ferramenta de autenticação padronizada, o 
+Spring Security.
+	4. Por abstrair muitas partes do funcionamento das apis, 
+o Spring abrevia as configurações necessárias, facilitando seu manejo.
+	5. Por simplificar muitos elementos da api, tornou-se muito mais 
+fácil e rápico começar uma api e ter um entregável em pouquíssimo tempo.	
+	
+e) Para startar uma api com Spring Boot é possível acessar o site 
+start.spring.io, fornecer dados básicos do projeto (linguagem, versão, nomes
+de group e artifact, etc) e adicionar as dependências desejadas, entre elas
+a do MS SQL Server Driver. O projeto deverá ser importado para a IDE e o BD
+deverá ser configurado no arquivo application.properties.
+
+f) é o arquivo que contém as informações básicas da api 
+e as configurações de extensões do Spring, informando ao Maven as 
+libs da api.
+
+g) é o arquivo que contém as configurações mais gerais da api, 
+como as de configuração de BD.
+
+h) informar ao Spring que dado trecho de código terá uma leitura e 
+uma execução de modo padronizado.
+
+i)
+@Entity: informa ao Spring que a classe deve ser mapeada
+para o BD.
+
+@Controller: informa ao Spring que a classe contém os 
+endpoints para as requisições HTTP do cliente.
+
+@Interface: informa ao Spring que a classe é uma Interface.
+
+@Autowired: realiza a injeção de dependências para que a classe
+anotada possa utilizar dados vindos do BD.
+
+@Service: informa ao Spring que a classe anotada é um Service,
+responsável seja por comportar conexões com o BD (como no caso da
+arquitetura hexagonal), seja por comportar as reqras de negócio 
+(como no caso das implementações de Services).
+
+@Lombok : informa ao Spring que a classe anotada deve ser 
+automaticamente munida de getters e setters. 
+
+@Id: informa ao Spring que o atributo é um Id a ser mapeado para o BD.
+
+@GeneratedValue: através de uma strategy a ser informada, gera automaticamente
+um valor de id para o objeto.
+
+@GetMapping: informa ao Spring que o endpoint anotado deve responder a 
+requisições HTTP do tipo GET, buscando dados do BD.
+
+@PostMapping: informa ao Spring que o endpoint anotado deve responder a 
+requisições HTTP do tipo POST, postando/escrevendo dados no BD.
+
+j) Advices são ações executadas num dado momento do projeto; os tipos de 
+advices são: 1. "around", 2. "before" e 3. "after" e, como a tradução dos termos indica,
+são ações executadas, respectivamente, 1. "antes + depois", 2. "antes" e 3. "depois"
+do ponto do projeto anotado. 
+
+k) "IoC" é traduzido com "Inversão de Controle"; antes da criação do Spring, 
+os desenvolvedores deviam conhecer e manipular a infraestrutura do projeto manualmente,
+no entanto, como este era um processo trabalhoso, o Spring foi desenvolvido para 
+abstrair o funcionamento da infraestrutura do projeto. Com o Spring, os desenvolvedores 
+não precisam monitorar passo a passo o andamento de conexões e ciclo de vida de objetos, 
+entidades, threads e stacks, concentrando-se apenas na implementação e manutenção do 
+código de regras de negócio. A "Inversão de Controle" refere-se a essa delegação de 
+controle para o Spring.
+
+l) Pode-se adicionar segurança a um projeto Spring através da ferramenta 
+Spring Security, que monitora as autenticações de clientes. 
+
+m) o Spring Data JPA está encarregado de realizar as conexões com o BD e suas 
+annotations são utilizadas em classes Entity e Repository.
+
+n) Para agendar a execução de métodos com Spring é possível utilizar as 
+annotations @Component e @EnableScheduling (para sinalizar ao Spring 
+a classe cuja execução se quer agendar) e a annotation @Scheduled (que, através 
+de parâmetros como fixedDelay, InitialDelay e fixedRate, determina um tempo 
+para o agendamento).

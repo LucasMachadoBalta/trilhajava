@@ -1,0 +1,37 @@
+
+Trilha java - passo 11 
+Lucas Machado de Oliveira
+
+
+a) Uma lib é uma ferramenta que se propõe a atender
+a uma necessidade específica, ela pode ser mais facilmente
+substituida e/ou atualizada por um gerenciador de projetos
+(como o Maven, por exemplo). 
+
+b) 1. Hibernate: lib que permite realizar a conexão com o BD, 
+mas que hoje já é abstraida pelo JPA.
+
+	2. Mockito: lib que permite realizar testes unitários de 
+uma classe java.	
+
+c) o Maven administra as libs e dependências listadas no arquivo
+pom.xml, realizando atualizações necessárias e desincumbindo o 
+desenvolvedor de se preocupar em gerir manualmente as libs do projeto.
+
+d) Maven e Gradle se diferenciam, entre outros pontos, pela sintaxe 
+(Maven usa xml, Gradle dsl), a curva de aprendizado (menor para o Maven), 
+tempo de build (menor para o Gradle), popularidade de uso (Maven sendo o mais usado).
+
+e)  I. JDBC (Java DataBase Connectivity) é uma api para conexão de 
+uma api java com o BD, o driver faz essa mediação entre o BD e a api java (entre código
+java e query language) por meio das libs. 
+
+	II. Para adicionar uma lib ao projeto é possível colar a sua tag 
+no pom.xml ou, no caso da IDE Intellij, escrever o import completo numa classe e 
+deixar que a IDE gerencie a inclusão da lib no pom.	
+	
+	III. O driver é um intermediário entre api java e o BD; para usar o BD SQL, deve-se
+selecionar o driver correto para o BD e versões corretos, usar o pacote java.sql, para então
+poder-se discriminar a abertura da conexão, executar queries, armazenar o resultado
+das queries em objetos interface, navegar por tabelas e, ao final, fechar a conexão
+com o BD.
