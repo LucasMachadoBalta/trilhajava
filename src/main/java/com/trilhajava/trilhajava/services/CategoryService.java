@@ -22,4 +22,6 @@ public interface CategoryService {
     void updateById(Long id, CategoryDTO dto); // ñ seria melhor return obj p/ mostrar alterações?
 
     void delete(Long id);
+
+    CategoryEntity filter(String name, String description);
 }

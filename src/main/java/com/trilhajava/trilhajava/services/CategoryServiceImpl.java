@@ -5,6 +5,8 @@ import com.trilhajava.trilhajava.dto.EntryDTO;
 import com.trilhajava.trilhajava.entity.CategoryEntity;
 import com.trilhajava.trilhajava.entity.EntryEntity;
 import com.trilhajava.trilhajava.exceptions.CategoryNotFoundException;
+import com.trilhajava.trilhajava.exceptions.EmptyListException;
+import com.trilhajava.trilhajava.exceptions.ParametersNotFoundException;
 import com.trilhajava.trilhajava.repositories.CategoryRepository;
 import com.trilhajava.trilhajava.repositories.EntryRepository;
 import org.modelmapper.ModelMapper;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import static com.trilhajava.trilhajava.dto.CategoryDTO.mapToEntity;
 
@@ -84,6 +87,23 @@ public class CategoryServiceImpl {
     }
 
      */
+
+    public List<CategoryEntity> filter(String name, String description) {
+        if (name == null || description == null) {
+           throw new ParametersNotFoundException("Parâmetros com valores errados");
+        }
+        List<CategoryEntity> lista = new ArrayList<>(categoryRepository.findAll());
+        List<CategoryEntity> listaFiltrada = lista.stream().filter(e -> (
+                e.getName().equalsIgnoreCase(name)) &&
+                e.getDescription().equalsIgnoreCase(description)
+        ).collect(Collectors.toList());
+
+        if(listaFiltrada.isEmpty()) {
+            throw new EmptyListException("Não existe os dados pelo parâmetro passado");
+        }
+
+        return listaFiltrada;
+    }
 
 
     public CategoryEntity updateById(CategoryDTO dto) {

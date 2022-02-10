@@ -28,4 +28,9 @@ public class CategoryDTO {
                 .description(dto.getDescription())
                 .build();
     }
+
+    public CategoryDTO  (String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
 }

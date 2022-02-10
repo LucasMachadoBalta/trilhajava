@@ -1,0 +1,23 @@
+
+Trilha java - passo 12
+Lucas Machado de Oliveira
+
+
+a) O teste unitário visa testar um método de uma classe.
+Sugere-se que o teste unitário seja o principal 
+tipo de teste de um projeto. 
+
+b) Para realizar um teste, é preciso importar no projeto 
+a lib a ser utilizada (JUnity ou Mockito, por exemplo), 
+criar um pacote de testes no dir de testes, criar uma classe 
+correspondente à classe a ser testada junto com os testes 
+para os métodos a serem testados.  
+
+c) O teste unitário se propõe a testar um único
+método de uma classe. Idealmente, o teste unitário testa um método 
+de uma classe, no entanto, como é comum que uma classe 
+tenha diversos graus de acoplamento com outras classes,
+o teste unitário pode acabar por testar mais do que
+apenas o método visado ao início do teste. 
+
+d) JUnity e Mockito.

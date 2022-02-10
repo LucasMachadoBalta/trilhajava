@@ -6,6 +6,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "TB_CATEGORY")
@@ -23,12 +24,14 @@ public class CategoryEntity {
     private long id;
 
     @Column(name = "name")
+    //@NotNull
     private String name;
 
     @Column(name = "description")
+    //@NotNull
     private String description;
 
-    @OneToMany(mappedBy = "category")
+    @OneToMany(mappedBy = "category", fetch = FetchType.LAZY)
     @JsonIgnore
     private List<EntryEntity> listEntries;
 
@@ -37,6 +40,24 @@ public class CategoryEntity {
                 .description(categoryEntity.description)
                 .name(categoryEntity.name)
                 .build();
+    }
+
+    public CategoryEntity  (String name, String description) {
+        this.name = name;
+        this.description = description;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        CategoryEntity that = (CategoryEntity) o;
+        return Objects.equals(name, that.name) && Objects.equals(description, that.description);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description);
     }
 
     /*
