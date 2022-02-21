@@ -20,31 +20,37 @@ public class EntryController {
 
     // create(save) read(get) updateById deleteById
 
-    @GetMapping("/all")
+    @CrossOrigin
+    @GetMapping
     public List<EntryEntity> listEntry() {
         return service.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/average")
     public OptionalDouble getAverage() { return service.getAverage(); }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     public Object findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
+    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     public EntryDTO saveEntry(@RequestBody EntryDTO dto) {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     public void deleteEntry(@PathVariable("id") Long id) {
         service.delete(id);
     }
 
 
+    @CrossOrigin
     @PutMapping("/{id}")
     public void updateById(@RequestBody EntryDTO dto) {
         //return service.save(dto);

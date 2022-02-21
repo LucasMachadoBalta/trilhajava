@@ -28,18 +28,21 @@ public class CategoryController {
     @Autowired
     CategoryServiceImpl service;
 
-    @GetMapping("/all")
+    @CrossOrigin
+    @GetMapping
     @ApiOperation(value="Retorna uma lista de categorias")
     public List<CategoryEntity> listCategory() {
         return service.findAll();
     }
 
+    @CrossOrigin
     @GetMapping("/{id}")
     @ApiOperation(value="Retorna uma única categoria")
     public CategoryEntity findById(@PathVariable("id") Long id) {
         return service.findById(id);
     }
 
+    @CrossOrigin
     @PostMapping
     @ResponseStatus(HttpStatus.OK)
     @ApiOperation(value="Salva uma categoria")
@@ -47,18 +50,21 @@ public class CategoryController {
         return ResponseEntity.ok().body(service.save(dto)).getBody();
     }
 
+    @CrossOrigin
     @DeleteMapping("/{id}")
     @ApiOperation(value="Deleta uma categoria")
     public void deleteCategory(@PathVariable("id") Long id) {
         service.delete(id);
     }
 
+    @CrossOrigin
     @PutMapping("/{id}")
     @ApiOperation(value="Atualiza uma categoria")
     public void updateById(@RequestBody CategoryDTO dto) { //Long id
         ResponseEntity.ok().body(service.updateById(dto));
     }
 
+    @CrossOrigin
     @GetMapping("/filter")
     public List<CategoryEntity> filter(
             @RequestParam(value = "name", required = false) String name,
