@@ -1,0 +1,211 @@
+
+Trilha java - passo 14
+Lucas Machado de Oliveira
+
+a) 
+I. O merge é executado para enviar uma branch para uma master, ou seja,
+pode ser usado como meio de se delimitar uma tarefa e também como forma de segurança, 
+isolando um código potencialmente problemático do código principal.   
+
+II. O commit envia mudanças locais para o repo alvo.
+
+III. 
+Todos esses comandos basicamente preparam arquivos para serem enviados ao 
+repo alvo, diferenciando-se apenas nos tipos de files que atingem:
+git add -all -> prepara todas as mudanças realizadas no dir local.
+git add -u -> prepara as mudanças em arquivos deletados e modificados.
+git add -A -> prepara todas as mudanças realizadas no dir local.
+git add .	-> prepara as mudanças em arquivos novos e modificados.
+
+IV. 
+git status
+git add . 
+git commit -m "mensagem descritiva"
+git push
+
+V. 
+Já tinha alguma familiaridade com o git, mas a prática diária ajudou muito
+a fixar o conhecimento teórico.
+
+b)
+I. A camada Entity representa a classe para o BD.
+
+II. A POO é uma maneira de se representar objetos (produtos, pessoas etc.)
+do mundo real abstraindo seus atributos quantificáveis e descritíveis, 
+possibilitando uma padronização e o manejo pelos computadores. 
+
+III. Getters e setters constróem os objetos ao popular seus atributos.
+
+IV. Os construtores contróem um objeto com os atributos discriminados e 
+são indispensáveis para uma classe.
+
+V. Já tinha um bom conhecimento de POO.
+
+c) 
+I. A camada controller tem a função de receber requisições HTTP e lhes dar 
+o devido destino (ao receber um GET, buscar dados no BD, por exemplo).
+
+II. O padrão REST auxilia ao pensar as apis de modo distruído, dividindo-as entre
+clientes e servidores que se comunicam por requisições HTTP de modo stateless
+(o servidor não gerencia o status do cliente). 
+
+III. O CRUD soletra Create, Read, Update e Delete, o que equivale aos métodos 
+Put, Get, Post e Delete.
+
+IV.
+@PathVariable: reservado para partes da path; usado com GET
+@RequestParam: reservado para parâmetros de queries; usado com GET e DELETE 
+@RequestBody: reservado para o corpo de uma requisição; usado com POST  
+ 
+V. A ResponseEntity representa toda a resposta HTTP, permitindo controlar 
+código do status, cabeçalhos e corpo das requisições. 
+
+VI. Já tinha algum conhecimento do conteúdo, mas o desafio ajudou a 
+aprofundá-los.
+
+d)
+I. A camada Repository executa a conexão com o BD.
+
+II. A Annotation @Autowired injeta as dependências de um dado repositório, criando
+um objeto a partir do BD para que a classe possa manipulá-lo.
+
+III. O JPA abstrai muitos passos ao se realizar a conexão com o BD, e o desenvolvedor
+não precisa, por exemplo, se preocupar em abrir, manter e fechar a conexão com o BD, 
+simplificando o processo e desincumbindo-o de monitorar essas funções.
+
+IV. Deve-se colocar a tag correspondente ao BD no arquivo pom.xml e configurar o BD
+no arquivo application.properties.
+
+V. Já tinha um bom conhecimento desse conteúdo, mas foi útil revê-lo.
+
+e)
+I. A camada Service mantém as regras de negócio da api.
+
+II. Quando um método tem apenas um propósito a manutenção a longo prazo se 
+torna mais simples e o funcionamento daquele método é mais previsível, pois 
+sua execução não acarreta em resultados que não sejam aquele que seja estritamente 
+necessário.
+
+III. O método void não tem return nenhum, já os métodos tipados retornam objetos
+daquele tipo.
+
+IV. É possivel que um service chame outro na construção de um objeto ou como 
+implementação de um service abstrato. 
+
+V. Já tinha um bom conhecimento desse conteúdo, e um ponto que aprendi foi a 
+utilidade de se ter services abstratos e suas implementações.
+
+f) 
+I. O DTO é como que um objeto simplificado, pois carrega apenas os atributos 
+necessários de um objeto para a realização de um determinada função, evitando
+que dados sensíveis ou desimportantes estejam sempre trafegando pelo sistema.
+
+II. Através do construtor o objeto já é instanciado populado com valores, 
+através de getters e settters primeiro há a instância e depois o objeto é 
+populado manualmente, ou seja, com o construtor há uma limitação maior pois 
+ele exige o recebimento de todos os parâmetros para gerar o proximo objeto.
+
+III. Os mappers realizam a conversão de DTOs para Entities e de Entities para DTOs.
+Implementá-los foi um pouco difícil.
+
+IV. Já tinha um bom conhecimento desse conteúdo, mas foi útil rever a conversão 
+realizada pelos mappers.
+
+g) 
+I. Poderia ser feita averiguando manualmente por condicionais se a requisição 
+está null ou não. 
+
+II. Os ENUM servem para que uma variável tenha atributos de um conjunto fechado
+de possíveis valores, garantindo uma maior padronização do seu comportamento. 
+
+III. É possível criá-lo como se fosse uma classe qualquer e utilizá-lo como se 
+fosse um outra Annotation qualquer. 
+
+IV. O streams permite um código mais simples e legível, diminuindo as chances 
+de que se introduzam bugs no cógido.
+
+V. Já tinha um bom conhecimento desse conteúdo, mas foi útil rever a 
+construção de streams. 
+
+h) 
+I. Tratar exceptions permite que se preveja um problema no funcionamento do 
+cógido e que se anteveja uma solução para este dado problema já esperado, 
+evitando que o funciomaneto do sistema seja interrompido.
+
+II. Descobre-se possíveis exceptions testando o código.
+
+III. pode-se usar as palavras reservadas throw new Exception.
+
+IV. Implementando um ExceptionHandler com Exceptions específicas para o 
+código em questão.
+
+V. Já tinha um bom conhecimento desse conteúdo, mas a revisão foi útil.
+
+i)
+I. Esse Pattern define que uma classe tenha uma única instância durante a 
+execução da api ou requisição, o que é útil para tratar de forma global os 
+estados da api.
+
+II. O D significa Princípio da Inversão de Dependências, e prega que 
+
+III. As camadas separam por funções, permitindo uma manutenção de longo prazo 
+mais fácil e uma melhor separação de atribuições, aumentando a segurança e a 
+previsilidade no funcionamento do sistema. 
+
+IV. Não há arquitetura melhor, mas sim uma arquitetura mais adequada e funcional
+para um dado projeto. 
+
+V. Já tinha um bom conhecimento desse conteúdo, mas a revisão foi útil.
+
+j) 
+I. Java é uma linguagem de programação voltada para o back-end, 
+já o Spring é um framework que visa facilitar o desenvolvimento de apis.
+
+II. Sim, mas é mais interessante usar outros subprojetos do Spring para 
+facilitar ainda mais o desenvolvimento.
+
+III. Sim, é possível; deve-se discriminar suas tags de configuração no pom.xml.
+
+IV. Já tinha um bom conhecimento desse conteúdo, mas a revisão foi útil.
+
+k) 
+I. Lombok (cria automaticamente getters e setters de um objeto); ModelMapper (para
+converter DTOs em Entities e vice-versa); devtools (que reinicia automaticamente o 
+servidor quando são feitas alterações no código); Junit (para realizar testes 
+unitários); Swagger (para documentação de apis).
+
+II. A lib é um projeto independente que pode ser adicionado e retirado da api
+sem maiores impactos por ser projeto para responder a uma dada funcionalidade 
+específica, já o driver faz a mediação entre o BD e a api java (entre código
+java e query language) por meio das libs.
+
+III. Não existe um limite de libs para um projeto. 
+
+IV. Porque querer gerir dependências manualmente é trabalhoso, demorado
+e não gera valor de entrega para o cliente.
+
+V. Já tinha um bom conhecimento desse conteúdo, mas a revisão foi útil.
+
+l)
+I. Porque um sistema que não é testado não pode ser confiável, seu funcionamento
+pode conter bugs e erros que prejudicam o cliente. 
+
+II. O Mockito imita o funcionamento de uma classe, podendo, por exemplo, realizar
+uma requisição teste através de um método HTTP para validar seu funciomaneto.
+
+III. Sonar averigua se testes estão sendo validados.
+
+IV. Já tinha um bom conhecimento desse conteúdo, mas a revisão foi útil.
+
+m)
+I. Foi interessante porque foi a primeira vez que fiz esse processo.
+
+II. Foi entender o funcionamento e os problemas referentes ao front.
+
+III. sim. 
+
+IV. É um mecanismo usado por navegadores para compartilhar recursos entre 
+diferentes origens, podendo liberar ou não o acesso a um dado recurso. 
+
+V. Creio que sim, consegui ver o processo de integração acontecer e espero agora 
+poder pôr em prática esse conhecimento. 
